@@ -6,12 +6,14 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 17:25:23 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/03 22:24:57 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/03 22:31:05 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/parser.h"
 
+/// @brief Frees a t_map_list linked list
+/// @param list 
 void	ft_free_map_list(t_map_list *list)
 {
 	t_map_list	*temp;
