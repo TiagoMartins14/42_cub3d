@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 17:43:34 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/04 11:16:15 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/04 12:35:01 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ typedef enum e_direction
 	SOUTH,
 	EAST,
 	WEST,
+	FLOOR_RGB,
+	CEILING_RGB,
 }	t_direction;
 
 typedef enum e_tile
@@ -49,6 +51,13 @@ typedef enum e_tile
 	WALL,
 	PLAYER,
 }	t_tile;
+
+typedef enum e_color
+{
+	R,
+	G,
+	B,
+}	t_color;
 
 typedef struct s_map_list
 {
@@ -78,7 +87,7 @@ void		ft_free_map_list(t_map_list *list);
 */
 
 char		*get_texture_path(t_map_list *map_list, t_direction dir_code);
-int			**get_rgb();
+int	*get_rgb(t_map_list *map_list, t_direction dir_code);
 
 /*
  * map_creators.c

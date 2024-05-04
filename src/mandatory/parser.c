@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 17:25:23 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/04 11:21:38 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/04 12:37:40 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	map_init(t_map	*map)
 /// @param map_file 
 void	parse_map(char *map_file)
 {
+	int			*rgb;
 	int			map_fd;
 	char		*address;
 	t_map 		*map;
@@ -72,6 +73,8 @@ void	parse_map(char *map_file)
 	map = (t_map *)malloc(sizeof(t_map));
 	map->map_grid = create_map_grid_from_list(map_list, map);
 	map->north_wall = get_texture_path(map_list, NORTH);
+	rgb = get_rgb(map_list, CEILING_RGB);
+	printf("rgb: %d,%d,%d\n", rgb[0], rgb[1], rgb[2]);
 	ft_free_map_list(map_list);
 }
 
