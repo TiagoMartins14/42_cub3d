@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 17:25:23 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/03 22:31:05 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/04 08:42:40 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ bool	is_file_extension_correct(char *str)
 	int len;
 
 	len = ft_strlen(str);
-	if (str[len - 4] != '.' && str[len -3] != 'c' && \
-						str[len - 2] != 'u' && str[len - 1] != 'b')
+	if (str[len - 4] != '.' || str[len -3] != 'c' || \
+						str[len - 2] != 'u' || str[len - 1] != 'b')
 		return (false);
 	return (true);
 }
@@ -55,7 +55,7 @@ void	no_map_error(void)
 	ft_perror_exit(NULL, 2);
 }
 
-char	**get_texture_path()
+/* char	**get_texture_path()
 {
 	
 }
@@ -63,7 +63,7 @@ char	**get_texture_path()
 int	**get_rgb()
 {
 	
-}
+} */
 
 /// @brief Initiates the map struct
 /// @param map 
@@ -108,13 +108,12 @@ t_map_list	*create_map_list_from_fd(int	map_fd, t_map_list *map_list)
 /// @brief Creates a grid of the map
 /// @param map_list 
 /// @param map 
-t_map	*create_map_grid_from_list(t_map_list *map_list, t_map *map)
+char	**create_map_grid_from_list(t_map_list *map_list, t_map *map)
 {
 	t_map_list	*node;
 	int			rows_to_alloc;
 	int			i;
 
-	map = (t_map *)malloc(sizeof(t_map));
 	node = map_list;
 	rows_to_alloc = 0;
 	i = 0;
@@ -130,9 +129,8 @@ t_map	*create_map_grid_from_list(t_map_list *map_list, t_map *map)
 		map->map_grid[i++] = ft_strdup(node->row);
 		node = node->next;
 	}
-	map->map_grid[i] = '\0';
-	ft_free_map_list(map_list);
-	return (map);
+	map->map_grid[i] = NULL;
+	return (map->map_grid);
 }
 
 /// @brief Gets all the map's information from the file
@@ -144,7 +142,6 @@ void	parse_map(char *map_file)
 	t_map 		*map;
 	t_map_list	*map_list;
 
-	map = NULL;
 	map_list = NULL;
 	address = ft_strjoin("./maps/", map_file);
 	map_fd = open(address, O_RDONLY);
@@ -152,7 +149,10 @@ void	parse_map(char *map_file)
 	if (map_fd == -1)
 		ft_perror_exit(RED"Error\nUnable to open the file\n"RESET, 2);
 	map_list = create_map_list_from_fd(map_fd, map_list);
-	map = create_map_grid_from_list(map_list, map);
+	map = (t_map *)malloc(sizeof(t_map));
+	map->map_grid = create_map_grid_from_list(map_list, map);
+	ft_free_map_list(map_list);
+	grid_printer(map->map_grid);
 }
 
 int	main(int argc, char **argv)

@@ -6,7 +6,7 @@
 #    By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/03 17:27:06 by tiaferna          #+#    #+#              #
-#    Updated: 2024/05/03 17:35:41 by tiaferna         ###   ########.fr        #
+#    Updated: 2024/05/04 08:30:48 by tiaferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,8 @@ LIBFT_DIR =  src/libft
 
 LMLX_DIR = minilibx-linux
 
-SRCS = 	src/mandatory/parser.c
+SRCS = 	src/mandatory/parser.c \
+		src/mandatory/printers.c
 
 OBJS = $(SRCS:.c=.o)
 
