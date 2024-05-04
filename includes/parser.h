@@ -6,13 +6,14 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 17:43:34 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/03 22:22:03 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/04 11:16:15 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../src/libft/libft.h"
 #include "../src/libft/get_next_line/get_next_line.h"
 #include <stdio.h>
+#include <unistd.h>
 #include <stdbool.h>
 
 #define RESET "\033[0m"
@@ -37,8 +38,8 @@
 typedef enum e_direction
 {
 	NORTH,
-	EAST,
 	SOUTH,
+	EAST,
 	WEST,
 }	t_direction;
 
@@ -66,10 +67,29 @@ typedef struct s_map
 	char	**map_grid;
 }	t_map;
 
+/*
+ * free_mem.c
+*/
+
+void		ft_free_map_list(t_map_list *list);
+
+/*
+ * visual_getters.c
+*/
+
+char		*get_texture_path(t_map_list *map_list, t_direction dir_code);
+int			**get_rgb();
+
+/*
+ * map_creators.c
+*/
+
+t_map_list	*create_map_list_from_fd(int	map_fd, t_map_list *map_list);
+char		**create_map_grid_from_list(t_map_list *map_list, t_map *map);
 
 /*
  * printers.c
 */
 
-void	list_printer(t_map_list *map_list);
-void	grid_printer(char **grid);
+void		list_printer(t_map_list *map_list);
+void		grid_printer(char **grid);
