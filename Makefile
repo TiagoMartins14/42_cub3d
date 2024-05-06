@@ -6,7 +6,7 @@
 #    By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/03 17:27:06 by tiaferna          #+#    #+#              #
-#    Updated: 2024/05/04 11:34:02 by tiaferna         ###   ########.fr        #
+#    Updated: 2024/05/06 11:09:47 by tiaferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,9 @@ LFLAGS = -L$(LIBFT_DIR) -lft -L$(LMLX_DIR) -lmlx
 
 RM = rm -rf
 
-SRCDIR = src/mandatory
+SRC_DIR = src/mandatory
+
+OBJS_DIR = objs
 
 LIBFT_DIR =  src/libft
 
@@ -72,8 +74,9 @@ $(NAME): $(OBJS)
 	clear
 	@echo "$(GREEN)./cub3d executable is ready!$(RESET)"
 
-%.o: %.c *.h
-	$(CC) $(CFLAGS) -c $< -I . -o $@
+$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
+	mkdir -p $(@D)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	$(MAKE) -C $(LIBFT_DIR) clean

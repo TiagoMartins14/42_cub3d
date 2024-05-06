@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 08:54:59 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/04 12:41:12 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/06 11:29:13 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,19 @@ static int	*rgb_char_to_int(char **rgb_str)
 	int arr_len;
 	int	*rgb;
 	int	i;
+	int	j;
 
 	arr_len = 0;
 	i = 0;
 	rgb = (int *)malloc(sizeof(int) * 3);
 	while (rgb_str[arr_len])
 	{
+		j = 0;
+		while (rgb_str[arr_len][j])
+		{
+			if (!ft_isdigit(rgb_str[arr_len][j++]))
+				ft_perror_exit(RED"Error\nInvalid rgb color entered\n"RESET, 2);
+		}
 		rgb[i] = ft_atoi(rgb_str[arr_len]);
 		arr_len++;
 		if (arr_len > 3 || rgb[i] < 0 || rgb[i] > 255)

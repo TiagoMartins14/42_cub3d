@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 17:43:34 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/04 12:35:01 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/06 11:20:11 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,26 +79,27 @@ typedef struct s_map
 /*
  * free_mem.c
 */
-
 void		ft_free_map_list(t_map_list *list);
 
 /*
  * visual_getters.c
 */
-
 char		*get_texture_path(t_map_list *map_list, t_direction dir_code);
-int	*get_rgb(t_map_list *map_list, t_direction dir_code);
+int			*get_rgb(t_map_list *map_list, t_direction dir_code);
 
 /*
  * map_creators.c
 */
-
 t_map_list	*create_map_list_from_fd(int	map_fd, t_map_list *map_list);
 char		**create_map_grid_from_list(t_map_list *map_list, t_map *map);
 
 /*
  * printers.c
 */
-
 void		list_printer(t_map_list *map_list);
 void		grid_printer(char **grid);
+
+/*
+ * struct_init.c
+*/
+void		map_init(t_map	*map);

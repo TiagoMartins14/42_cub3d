@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 17:25:23 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/04 12:37:40 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/06 11:27:15 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,6 @@ void	no_map_error(void)
 	ft_perror_exit(NULL, 2);
 }
 
-/// @brief Initiates the map struct
-/// @param map 
-void	map_init(t_map	*map)
-{
-	map->north_wall = NULL;
-	map->east_wall = NULL;
-	map->south_wall = NULL;
-	map->west_wall = NULL;
-	map->floor_color = 0;
-	map->ceiling_color = 0;
-	map->map_grid = NULL;
-}
-
-
 /// @brief Gets all the map's information from the file
 /// @param map_file 
 void	parse_map(char *map_file)
@@ -72,8 +58,8 @@ void	parse_map(char *map_file)
 	map_list = create_map_list_from_fd(map_fd, map_list);
 	map = (t_map *)malloc(sizeof(t_map));
 	map->map_grid = create_map_grid_from_list(map_list, map);
-	map->north_wall = get_texture_path(map_list, NORTH);
-	rgb = get_rgb(map_list, CEILING_RGB);
+	// map->north_wall = get_texture_path(map_list, NORTH);
+	rgb = get_rgb(map_list, FLOOR_RGB);
 	printf("rgb: %d,%d,%d\n", rgb[0], rgb[1], rgb[2]);
 	ft_free_map_list(map_list);
 }
