@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 08:47:23 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/04 08:48:12 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/07 09:51:36 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,18 @@ t_map_list	*create_map_list_from_fd(int	map_fd, t_map_list *map_list)
 	return (map_list);
 }
 
+static bool	check_for_wall_tile(t_map_list *map_list_node)
+{
+	int	i;
+
+	i = 0;
+	while (ft_iswhitespace(map_list_node->row[i]))
+		i++;
+	if (map_list_node->row[i] && map_list_node->row[i] == '1')
+		return (true);
+	return (false);
+}
+
 /// @brief Creates a grid of the map
 /// @param map_list 
 /// @param map 
@@ -53,11 +65,18 @@ char	**create_map_grid_from_list(t_map_list *map_list, t_map *map)
 	i = 0;
 	while(node)
 	{
-		rows_to_alloc++;
+		if (check_for_wall_tile(map_list) == true)
+			rows_to_alloc++;
 		node = node->next;
 	}
 	map->map_grid = (char **)malloc(sizeof(char *) * (rows_to_alloc + 1));
 	node = map_list;
+	while(node)
+	{
+		if (check_for_wall_tile(map_list) == true)
+			break ;
+		node = node->next;
+	}
 	while (node)
 	{
 		map->map_grid[i++] = ft_strdup(node->row);

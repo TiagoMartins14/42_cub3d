@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 17:43:34 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/06 11:20:11 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/06 11:47:33 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ typedef struct s_map
 	char	*east_wall;
 	char	*south_wall;
 	char	*west_wall;
-	int		**floor_color;
-	int		**ceiling_color;
+	int		*floor_color;
+	int		*ceiling_color;
 	char	**map_grid;
 }	t_map;
 
@@ -98,8 +98,9 @@ char		**create_map_grid_from_list(t_map_list *map_list, t_map *map);
 */
 void		list_printer(t_map_list *map_list);
 void		grid_printer(char **grid);
+void		map_struct_printer(t_map *map);
 
 /*
  * struct_init.c
 */
-void		map_init(t_map	*map);
+void	map_init(t_map	*map, t_map_list *map_list);

@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 08:54:59 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/06 11:29:13 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/06 23:00:42 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static bool	is_valid_texture_path(char *path)
 		close(path_fd);
 		return (true);
 	}
-	return (false);
+	return (true);
 }
 
 char	*get_texture_path(t_map_list *map_list, t_direction dir_code)
@@ -65,7 +65,7 @@ char	*get_texture_path(t_map_list *map_list, t_direction dir_code)
 			i++;
 		if (node->row + i)
 		{
-			path = ft_strdup(node->row + i);
+			path = ft_strldup(node->row + i, ft_strlen(node->row) - 1);
 			if (is_valid_texture_path(path) == true)
 				return (path);
 			ft_perror_exit(RED"Error\nInvalid texture path\n"RESET, 2);
@@ -88,12 +88,10 @@ static int	*rgb_char_to_int(char **rgb_str)
 	rgb = (int *)malloc(sizeof(int) * 3);
 	while (rgb_str[arr_len])
 	{
-		j = 0;
-		while (rgb_str[arr_len][j])
-		{
-			if (!ft_isdigit(rgb_str[arr_len][j++]))
+		j = -1;
+		while (rgb_str[arr_len][++j])
+			if (!ft_isdigit(rgb_str[arr_len][j]) && rgb_str[arr_len][j] != '\n')
 				ft_perror_exit(RED"Error\nInvalid rgb color entered\n"RESET, 2);
-		}
 		rgb[i] = ft_atoi(rgb_str[arr_len]);
 		arr_len++;
 		if (arr_len > 3 || rgb[i] < 0 || rgb[i] > 255)

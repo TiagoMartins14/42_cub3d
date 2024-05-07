@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 17:25:23 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/06 11:27:15 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/06 11:44:00 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	no_map_error(void)
 /// @param map_file 
 void	parse_map(char *map_file)
 {
-	int			*rgb;
 	int			map_fd;
 	char		*address;
 	t_map 		*map;
@@ -57,10 +56,9 @@ void	parse_map(char *map_file)
 		ft_perror_exit(RED"Error\nUnable to open the file\n"RESET, 2);
 	map_list = create_map_list_from_fd(map_fd, map_list);
 	map = (t_map *)malloc(sizeof(t_map));
-	map->map_grid = create_map_grid_from_list(map_list, map);
-	// map->north_wall = get_texture_path(map_list, NORTH);
-	rgb = get_rgb(map_list, FLOOR_RGB);
-	printf("rgb: %d,%d,%d\n", rgb[0], rgb[1], rgb[2]);
+	map_init(map, map_list);
+	map_struct_printer(map);
+	exit(0);
 	ft_free_map_list(map_list);
 }
 
