@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 17:43:34 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/07 16:53:32 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/07 18:01:54 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,14 @@ typedef struct s_map
 */
 void		free_map_list(t_map_list *list);
 void		ft_perror_shutdown(char *str, int error, t_map *map);
+void		ft_rgb_perror_shutdown(char *str, t_map *map, int *rgb, char**rgb_str);
 
 /*
  * visual_getters.c
 */
-char		*get_texture_path(t_map_list *map_list, t_direction dir_code);
-int			*get_rgb(t_map_list *map_list, t_direction dir_code);
+char 		*get_direction(t_direction dir_code);
+char		*get_texture_path(t_map *map, t_direction dir_code);
+int			*get_rgb(t_map *map, t_direction dir_code);
 
 /*
  * map_creators.c
@@ -106,3 +108,4 @@ void		map_struct_printer(t_map *map);
  * struct_init.c
 */
 void		map_init(t_map	*map);
+void		map_fetch_struct_info(t_map	*map);

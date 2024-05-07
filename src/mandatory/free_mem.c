@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 08:50:28 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/07 16:57:04 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/07 17:42:28 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,20 @@ void	ft_perror_shutdown(char *str, int error, t_map *map)
 	if (str)
 		write(error, str, ft_strlen(str));
 	exit(error);
+}
+
+/// @brief Used within the rgb_char_to_int() function.
+/// @brief Frees all allocated memory and exits the program with a custom error
+/// @param str 
+/// @param error 
+/// @param map 
+/// @param map_list 
+void	ft_rgb_perror_shutdown(char *str, t_map *map, int *rgb, char**rgb_str)
+{
+	free(rgb);
+	ft_free_smatrix(rgb_str);
+	free_map(map);
+	if (str)
+		write(2, str, ft_strlen(str));
+	exit(2);
 }

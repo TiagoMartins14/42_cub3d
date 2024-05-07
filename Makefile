@@ -6,7 +6,7 @@
 #    By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/03 17:27:06 by tiaferna          #+#    #+#              #
-#    Updated: 2024/05/06 11:47:05 by tiaferna         ###   ########.fr        #
+#    Updated: 2024/05/07 18:02:40 by tiaferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,8 +51,9 @@ SRCS = 	src/mandatory/free_mem.c \
 		src/mandatory/map_creators.c \
 		src/mandatory/parser.c \
 		src/mandatory/printers.c \
+		src/mandatory/rgb_getter.c \
 		src/mandatory/struct_init.c \
-		src/mandatory/visual_getters.c
+		src/mandatory/textures_geter.c
 
 OBJS = $(SRCS:.c=.o)
 

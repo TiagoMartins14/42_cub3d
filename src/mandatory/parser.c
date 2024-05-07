@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 17:25:23 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/07 16:53:44 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/07 17:31:12 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,12 @@ void	parse_map(char *map_file)
 	if (map_fd == -1)
 		ft_perror_exit(RED"Error\nUnable to open the file\n"RESET, 2);
 	map = (t_map *)malloc(sizeof(t_map));
-	map->map_list = create_map_list_from_fd(map_fd, map);
 	map_init(map);
+	map->map_list = create_map_list_from_fd(map_fd, map);
+	close(map_fd);
+	map_fetch_struct_info(map);
 	map_struct_printer(map);
-	ft_perror_shutdown("Success!!\n", 1, map);
+	ft_perror_shutdown("\nSuccess!!\n", 1, map);
 }
 
 int	main(int argc, char **argv)
