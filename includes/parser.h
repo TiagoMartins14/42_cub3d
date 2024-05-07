@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 17:43:34 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/06 11:47:33 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/07 16:53:32 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,19 +67,21 @@ typedef struct s_map_list
 
 typedef struct s_map
 {
-	char	*north_wall;
-	char	*east_wall;
-	char	*south_wall;
-	char	*west_wall;
-	int		*floor_color;
-	int		*ceiling_color;
-	char	**map_grid;
+	char		*north_wall;
+	char		*south_wall;
+	char		*east_wall;
+	char		*west_wall;
+	int			*floor_color;
+	int			*ceiling_color;
+	char		**map_grid;
+	t_map_list	*map_list;
 }	t_map;
 
 /*
  * free_mem.c
 */
-void		ft_free_map_list(t_map_list *list);
+void		free_map_list(t_map_list *list);
+void		ft_perror_shutdown(char *str, int error, t_map *map);
 
 /*
  * visual_getters.c
@@ -90,8 +92,8 @@ int			*get_rgb(t_map_list *map_list, t_direction dir_code);
 /*
  * map_creators.c
 */
-t_map_list	*create_map_list_from_fd(int	map_fd, t_map_list *map_list);
-char		**create_map_grid_from_list(t_map_list *map_list, t_map *map);
+t_map_list	*create_map_list_from_fd(int map_fd, t_map *map);
+char		**create_map_grid_from_list(t_map *map);
 
 /*
  * printers.c
@@ -103,4 +105,4 @@ void		map_struct_printer(t_map *map);
 /*
  * struct_init.c
 */
-void	map_init(t_map	*map, t_map_list *map_list);
+void		map_init(t_map	*map);

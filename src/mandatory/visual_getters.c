@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 08:54:59 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/06 23:00:42 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/07 17:03:07 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,36 +39,42 @@ static bool	is_valid_texture_path(char *path)
 	int	path_fd;
 
 	path_fd = open(path, R_OK);
-	if (path_fd == 0)
+	if (path_fd != -1)
 	{
 		close(path_fd);
-		return (true);
+		if (ft_strcmp(path + ft_strlen(path) - 3, ".xpm"))
+			return (true);
 	}
-	return (true);
+	return (false);
 }
 
 char	*get_texture_path(t_map_list *map_list, t_direction dir_code)
 {
 	t_map_list	*node;
 	char		*path;
+	char		*direction;
 	int			i;
 
+	direction = get_direction(dir_code);
 	node = map_list;
 	while (node)
 	{
 		i = 0;
 		while (node->row && ft_iswhitespace(node->row[i]))
 			i++;
-		if (ft_strncmp(node->row + i, get_direction(dir_code), 3) == 0)
-			i += 2;
-		while (node->row && ft_iswhitespace(node->row[i]))
-			i++;
-		if (node->row + i)
+		if (ft_strncmp(node->row + i, direction, 3) == 0)
 		{
-			path = ft_strldup(node->row + i, ft_strlen(node->row) - 1);
-			if (is_valid_texture_path(path) == true)
-				return (path);
-			ft_perror_exit(RED"Error\nInvalid texture path\n"RESET, 2);
+			free(direction);
+			i += 2;
+			while (node->row && ft_iswhitespace(node->row[i]))
+				i++;
+			if (node->row + i)
+			{
+				path = ft_strldup(node->row + i, ft_strlen(node->row) - i - 1);
+				if (is_valid_texture_path(path) == true)
+					return (path);
+				ft_perror_exit(RED"Error\nInvalid texture path\n"RESET, 2);
+			}
 		}
 		node = node->next;
 	}
@@ -106,24 +112,30 @@ static int	*rgb_char_to_int(char **rgb_str)
 int	*get_rgb(t_map_list *map_list, t_direction dir_code)
 {
 	int			i;
+	int			*rgb;
+	char		*direction;
 	char		**rgb_str;
 	t_map_list	*node;
 
+	direction = get_direction(dir_code);
 	node = map_list;
 	while (node)
 	{
 		i = 0;
 		while (node->row && ft_iswhitespace(node->row[i]))
 			i++;
-		if (ft_strncmp(node->row + i, get_direction(dir_code), 2) == 0)
+		if (ft_strncmp(node->row + i, direction, 2) == 0)
 		{
+			free(direction);
 			i++;
 			while (node->row && ft_iswhitespace(node->row[i]))
 				i++;
 			if (node->row + i)
 			{
 				rgb_str = ft_split(node->row + i, ',');
-				return (rgb_char_to_int(rgb_str));
+				rgb = rgb_char_to_int(rgb_str);
+				ft_free_smatrix(rgb_str);
+				return (rgb);
 			}
 		}
 		node = node->next;
