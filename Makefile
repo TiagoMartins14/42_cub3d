@@ -6,7 +6,7 @@
 #    By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/03 17:27:06 by tiaferna          #+#    #+#              #
-#    Updated: 2024/05/07 18:02:40 by tiaferna         ###   ########.fr        #
+#    Updated: 2024/05/08 21:54:30 by tiaferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,7 @@ LIBFT_DIR =  src/libft
 LMLX_DIR = minilibx-linux
 
 SRCS = 	src/mandatory/free_mem.c \
+		src/mandatory/map_checkers.c
 		src/mandatory/map_creators.c \
 		src/mandatory/parser.c \
 		src/mandatory/printers.c \
