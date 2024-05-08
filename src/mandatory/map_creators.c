@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 08:47:23 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/07 15:37:34 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/08 21:30:54 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,15 @@ t_map_list	*create_map_list_from_fd(int map_fd, t_map *map)
 		free(line);
 	}
 	node = map->map_list;
-	while ((line = get_next_line(map_fd)))
+	line = get_next_line(map_fd);
+	while (line)
 	{
 		node->next = (t_map_list *)malloc(sizeof(t_map_list));
 		node = node->next;
 		node->row = ft_strdup(line);
 		node->next = NULL;
 		free(line);
+		line = get_next_line(map_fd);
 	}
 	return (map->map_list);
 }
@@ -54,6 +56,19 @@ static bool	check_for_wall_tile(t_map_list *map_list_node)
 	return (false);
 }
 
+static int	count_rows_to_alloc(t_map_list *node)
+{
+	int	ret;
+
+	while (node)
+	{
+		if (check_for_wall_tile(node) == true)
+			ret++;
+		node = node->next;
+	}
+	return (ret);
+}
+
 /// @brief Creates a grid of the map
 /// @param map_list 
 /// @param map 
@@ -64,17 +79,11 @@ char	**create_map_grid_from_list(t_map *map)
 	int			i;
 
 	node = map->map_list;
-	rows_to_alloc = 0;
 	i = 0;
-	while(node)
-	{
-		if (check_for_wall_tile(node) == true)
-			rows_to_alloc++;
-		node = node->next;
-	}
+	rows_to_alloc = count_rows_to_alloc(node);
 	map->map_grid = (char **)malloc(sizeof(char *) * (rows_to_alloc + 1));
 	node = map->map_list;
-	while(node)
+	while (node)
 	{
 		if (check_for_wall_tile(node) == true)
 			break ;

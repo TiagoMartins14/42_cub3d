@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 11:14:21 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/07 17:30:34 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/08 21:12:24 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,3 @@ void	map_fetch_struct_info(t_map	*map)
 	map->ceiling_color = get_rgb(map, CEILING_RGB);
 	map->map_grid = create_map_grid_from_list(map);
 }
-

@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 17:25:23 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/07 17:31:12 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/08 21:07:54 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 /// @return boolean
 bool	is_file_extension_correct(char *str)
 {
-	int len;
+	int	len;
 
 	len = ft_strlen(str);
 	if (str[len - 4] != '.' || str[len -3] != 'c' || \
@@ -45,7 +45,7 @@ void	parse_map(char *map_file)
 {
 	int			map_fd;
 	char		*address;
-	t_map 		*map;
+	t_map		*map;
 
 	address = ft_strjoin("./maps/", map_file);
 	map_fd = open(address, O_RDONLY);
@@ -58,7 +58,7 @@ void	parse_map(char *map_file)
 	close(map_fd);
 	map_fetch_struct_info(map);
 	map_struct_printer(map);
-	ft_perror_shutdown("\nSuccess!!\n", 1, map);
+	free_map(map);
 }
 
 int	main(int argc, char **argv)

@@ -6,13 +6,13 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 08:54:59 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/07 18:02:18 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/08 21:10:20 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/parser.h"
 
-char *get_direction(t_direction dir_code)
+char	*get_direction(t_direction dir_code)
 {
 	char		*direction;
 
@@ -36,7 +36,7 @@ char *get_direction(t_direction dir_code)
 
 static int	*rgb_char_to_int(char **rgb_str, t_map *map)
 {
-	int arr_len;
+	int	arr_len;
 	int	*rgb;
 	int	i;
 	int	j;
@@ -67,10 +67,15 @@ static int	*return_rgb(t_map_list *node, int i, t_map *map)
 {
 	int		*rgb;
 	char	**rgb_str;
-	
-	rgb_str = ft_split(node->row + i, ',');
-	rgb = rgb_char_to_int(rgb_str, map);
-	ft_free_smatrix(rgb_str);
+
+	while (node->row && ft_iswhitespace(node->row[i]))
+		i++;
+	if (node->row + i)
+	{
+		rgb_str = ft_split(node->row + i, ',');
+		rgb = rgb_char_to_int(rgb_str, map);
+		ft_free_smatrix(rgb_str);
+	}
 	return (rgb);
 }
 
@@ -98,5 +103,6 @@ int	*get_rgb(t_map *map, t_direction dir_code)
 		}
 		node = node->next;
 	}
+	free(direction);
 	return (NULL);
 }
