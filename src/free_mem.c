@@ -6,11 +6,11 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 08:50:28 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/08 20:54:33 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/10 18:44:35 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/parser.h"
+#include "../includes/parser.h"
 
 /// @brief Frees a t_map_list linked list
 /// @param list 

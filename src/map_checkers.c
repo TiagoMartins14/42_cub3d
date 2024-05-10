@@ -6,11 +6,11 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 21:53:53 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/08 22:09:21 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/10 18:44:42 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/parser.h"
+#include "../includes/parser.h"
 
 int	check_path(t_map *map, int x, int y)
 {

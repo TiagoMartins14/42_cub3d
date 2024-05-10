@@ -6,11 +6,11 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 17:59:55 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/08 21:09:51 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/10 18:45:08 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/parser.h"
+#include "../includes/parser.h"
 
 static bool	is_valid_texture_path(char *path)
 {

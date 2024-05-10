@@ -6,15 +6,15 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 17:43:34 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/08 21:07:08 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/10 18:47:13 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSER_H
 # define PARSER_H
 
-# include "../src/libft/libft.h"
-# include "../src/libft/get_next_line/get_next_line.h"
+# include "../libs/libft/libft.h"
+# include "../libs/libft/get_next_line/get_next_line.h"
 # include <stdio.h>
 # include <unistd.h>
 # include <stdbool.h>

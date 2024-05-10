@@ -6,11 +6,11 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 11:14:21 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/08 21:12:24 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/10 18:45:03 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/parser.h"
+#include "../includes/parser.h"
 
 void	map_init(t_map	*map)
 {

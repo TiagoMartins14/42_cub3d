@@ -6,11 +6,11 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 08:47:23 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/08 21:30:54 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/10 18:44:46 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/parser.h"
+#include "../includes/parser.h"
 
 /// @brief Creates a linked list where each node is a row of the map
 /// @param map_fd 

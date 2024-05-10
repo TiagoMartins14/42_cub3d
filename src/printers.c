@@ -6,11 +6,11 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 22:20:33 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/08 21:48:40 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/10 18:44:55 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/parser.h"
+#include "../includes/parser.h"
 
 void	list_printer(t_map_list *map_list)
 {
