@@ -6,13 +6,13 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 08:54:59 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/10 18:44:59 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/10 19:06:25 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/parser.h"
 
-char	*get_direction(t_direction dir_code)
+char	*set_direction(t_direction dir_code)
 {
 	char		*direction;
 
@@ -85,7 +85,7 @@ int	*get_rgb(t_map *map, t_direction dir_code)
 	char		*direction;
 	t_map_list	*node;
 
-	direction = get_direction(dir_code);
+	direction = set_direction(dir_code);
 	node = map->map_list;
 	while (node)
 	{

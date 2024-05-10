@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 21:53:53 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/10 18:44:42 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/10 19:03:59 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@ int	check_path(t_map *map, int x, int y)
 	if (grid[y - 1][x] == '0')
 		check_path(map, x, y - 1);
 	return (0);
+}
+
+bool	is_map_closed(t_map *map)
+{
+	
 }
 
 int	check_map_symbols(char **map_array)

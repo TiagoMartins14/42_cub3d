@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 08:50:28 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/10 18:44:35 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/10 19:52:45 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,12 @@ void	free_map(t_map *map)
 		free(map->floor_color);
 	if (map->ceiling_color)
 		free(map->ceiling_color);
+	if (map->starting_position)
+		free(map->starting_position);
 	if (map->map_grid)
 		ft_free_smatrix(map->map_grid);
+	if (map->checkers_map_grid)
+		ft_free_smatrix(map->checkers_map_grid);
 	if (map->map_list)
 		free_map_list(map->map_list);
 	free(map);

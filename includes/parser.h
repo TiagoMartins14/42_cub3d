@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 17:43:34 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/10 18:47:13 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/10 19:49:42 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,10 @@ typedef struct s_map
 	char		*west_wall;
 	int			*floor_color;
 	int			*ceiling_color;
+	int			*starting_position;
+	t_direction	starting_direction;
 	char		**map_grid;
+	char		**checkers_map_grid;
 	t_map_list	*map_list;
 }	t_map;
 
@@ -92,7 +95,7 @@ void		ft_rgb_perror_shutdown(char *str, t_map *map, \
 /*
  * visual_getters.c
 */
-char		*get_direction(t_direction dir_code);
+char		*set_direction(t_direction dir_code);
 char		*get_texture_path(t_map *map, t_direction dir_code);
 int			*get_rgb(t_map *map, t_direction dir_code);
 
@@ -101,6 +104,20 @@ int			*get_rgb(t_map *map, t_direction dir_code);
 */
 t_map_list	*create_map_list_from_fd(int map_fd, t_map *map);
 char		**create_map_grid_from_list(t_map *map);
+
+/*
+ * player_utils.c
+*/
+
+/// @brief Gets the player's starting direction
+/// @param map 
+/// @return Returns t_direction direction
+t_direction	starting_direction(t_map *map);
+
+/// @brief Gets the player's starting position
+/// @param map 
+/// @return Returns the x and y coordinates of the grid map
+int	*starting_coordinate(t_map *map);
 
 /*
  * printers.c
@@ -112,7 +129,13 @@ void		map_struct_printer(t_map *map);
 /*
  * struct_init.c
 */
+
+/// @brief Initializes struct's parameters
+/// @param map 
 void		map_init(t_map	*map);
+
+/// @brief Fetches all the map struct info
+/// @param map 
 void		map_fetch_struct_info(t_map	*map);
 
 #endif
