@@ -6,32 +6,49 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 21:53:53 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/10 19:03:59 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/10 20:19:50 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/parser.h"
 
-int	check_path(t_map *map, int x, int y)
+int	flood_fill(t_map *map, int x, int y)
 {
 	char	**grid;
 
 	grid = map->map_grid;
 	grid[y][x] = 'F';
 	if (grid[y][x + 1] == '0')
-		check_path(map, x + 1, y);
+		flood_fill(map, x + 1, y);
 	if (grid[y][x - 1] == '0')
-		check_path(map, x - 1, y);
+		flood_fill(map, x - 1, y);
 	if (grid[y + 1][x] == '0')
-		check_path(map, x, y + 1);
+		flood_fill(map, x, y + 1);
 	if (grid[y - 1][x] == '0')
-		check_path(map, x, y - 1);
+		flood_fill(map, x, y - 1);
 	return (0);
 }
 
-bool	is_map_closed(t_map *map)
+bool	is_map_closed(t_map *map, int x, int y)
 {
-	
+	char	**grid;
+
+	grid = map->map_grid;
+	grid[y][x] = 'F';
+	if (ft_iswhitespace(grid[y][x + 1]) || 
+		ft_iswhitespace(grid[y][x - 1]) || 
+		ft_iswhitespace(grid[y][y + 1]) || 
+		ft_iswhitespace(grid[y][y - 1]))
+		ft_perror_shutdown(RED"Error\nMap is npt closed\n"RESET, 2, map);
+	if (grid[y][x + 1] == '0')
+		flood_fill(map, x + 1, y);
+	if (grid[y][x - 1] == '0')
+		flood_fill(map, x - 1, y);
+	if (grid[y + 1][x] == '0')
+		flood_fill(map, x, y + 1);
+	if (grid[y - 1][x] == '0')
+		flood_fill(map, x, y - 1);
+	return (0);
 }
 
 int	check_map_symbols(char **map_array)

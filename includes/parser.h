@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 17:43:34 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/10 19:49:42 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/10 20:07:20 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,13 @@ int			*get_rgb(t_map *map, t_direction dir_code);
 /*
  * map_creators.c
 */
+int			flood_fill(t_map *map, int x, int y);
+bool		is_map_closed(t_map *map);
+int			check_map_symbols(char **map_array);
+
+/*
+ * map_creators.c
+*/
 t_map_list	*create_map_list_from_fd(int map_fd, t_map *map);
 char		**create_map_grid_from_list(t_map *map);
 
@@ -117,7 +124,7 @@ t_direction	starting_direction(t_map *map);
 /// @brief Gets the player's starting position
 /// @param map 
 /// @return Returns the x and y coordinates of the grid map
-int	*starting_coordinate(t_map *map);
+int			*starting_coordinate(t_map *map);
 
 /*
  * printers.c
