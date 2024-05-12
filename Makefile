@@ -6,7 +6,7 @@
 #    By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/03 17:27:06 by tiaferna          #+#    #+#              #
-#    Updated: 2024/05/10 18:48:58 by tiaferna         ###   ########.fr        #
+#    Updated: 2024/05/12 18:10:42 by tiaferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,6 +61,7 @@ SRCS			=	free_mem.c \
 					map_checkers.c \
 					map_creators.c \
 					parser.c \
+					player_utils.c \
 					printers.c \
 					rgb_getter.c \
 					struct_init.c \

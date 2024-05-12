@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 08:47:23 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/10 18:44:46 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/12 23:37:26 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static bool	check_for_wall_tile(t_map_list *map_list_node)
 	int	i;
 
 	i = 0;
-	while (ft_iswhitespace(map_list_node->row[i]))
+	while (map_list_node->row[i] && ft_iswhitespace(map_list_node->row[i]))
 		i++;
 	if (map_list_node->row[i] && map_list_node->row[i] == '1')
 		return (true);
@@ -96,4 +96,10 @@ char	**create_map_grid_from_list(t_map *map)
 	}
 	map->map_grid[i] = NULL;
 	return (map->map_grid);
+}
+
+void	reset_map_grid(t_map *map)
+{
+	ft_free_smatrix(map->map_grid);
+	create_map_grid_from_list(map);
 }

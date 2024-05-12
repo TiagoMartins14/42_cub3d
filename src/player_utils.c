@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 19:07:29 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/10 20:03:41 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/12 22:16:57 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,9 @@ int	*starting_coordinate(t_map *map)
 {
 	int	y;
 	int	x;
-	int	*coordinate;
 
 	y = 0;
-	coordinate = (int *)malloc(sizeof(int) * 2);
-	coordinate = NULL;
+	map->starting_position = (int *)malloc(sizeof(int) * 2);
 	while (map->map_grid[y])
 	{
 		x = 0;
@@ -55,13 +53,14 @@ int	*starting_coordinate(t_map *map)
 			if (map->map_grid[y][x] == 'N' || map->map_grid[y][x] == 'S' \
 			|| map->map_grid[y][x] == 'E' || map->map_grid[y][x] == 'W')
 			{
-				coordinate[0] = y;
-				coordinate[1] = x;
-				return (coordinate);
+				map->starting_position[0] = y;
+				map->starting_position[1] = x;
+				return (map->starting_position);
 			}
 			x++;
 		}
 		y++;
 	}
-	return (coordinate);
+	ft_perror_shutdown(RED"Error\nNo player found\n"RESET, 2, map);
+	return (map->starting_position);
 }

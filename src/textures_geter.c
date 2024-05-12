@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 17:59:55 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/10 18:45:08 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/12 18:03:30 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	*get_texture_path(t_map *map, t_direction dir_code)
 	int			i;
 
 	path = NULL;
-	direction = get_direction(dir_code);
+	direction = set_direction(dir_code);
 	node = map->map_list;
 	while (node)
 	{

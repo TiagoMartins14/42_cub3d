@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 17:43:34 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/10 20:07:20 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/12 22:12:50 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ typedef struct s_map
 	int			*starting_position;
 	t_direction	starting_direction;
 	char		**map_grid;
-	char		**checkers_map_grid;
 	t_map_list	*map_list;
 }	t_map;
 
@@ -93,6 +92,11 @@ void		ft_rgb_perror_shutdown(char *str, t_map *map, \
 					int *rgb, char**rgb_str);
 
 /*
+ * map_checkers.c
+*/
+void		map_checker(t_map *map);
+
+/*
  * visual_getters.c
 */
 char		*set_direction(t_direction dir_code);
@@ -102,15 +106,9 @@ int			*get_rgb(t_map *map, t_direction dir_code);
 /*
  * map_creators.c
 */
-int			flood_fill(t_map *map, int x, int y);
-bool		is_map_closed(t_map *map);
-int			check_map_symbols(char **map_array);
-
-/*
- * map_creators.c
-*/
 t_map_list	*create_map_list_from_fd(int map_fd, t_map *map);
 char		**create_map_grid_from_list(t_map *map);
+void		reset_map_grid(t_map *map);
 
 /*
  * player_utils.c

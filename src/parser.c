@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 17:25:23 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/10 19:50:50 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/12 23:36:45 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,10 @@ void	parse_map(char *map_file)
 	map = (t_map *)malloc(sizeof(t_map));
 	map_init(map);
 	map->map_list = create_map_list_from_fd(map_fd, map);
-	map->checkers_map_grid = create_map_list_from_fd(map_fd, map);
 	close(map_fd);
 	map_fetch_struct_info(map);
-	map_struct_printer(map);
+	map_checker(map);
+	// map_struct_printer(map);
 	free_map(map);
 }
 
