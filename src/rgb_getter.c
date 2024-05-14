@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 08:54:59 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/10 19:06:25 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/14 14:20:49 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ static int	*return_rgb(t_map_list *node, int i, t_map *map)
 	int		*rgb;
 	char	**rgb_str;
 
+	rgb = NULL;
+	rgb_str = NULL;
 	while (node->row && ft_iswhitespace(node->row[i]))
 		i++;
 	if (node->row + i)
