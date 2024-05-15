@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 08:47:23 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/15 17:09:37 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/15 18:09:57 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,8 @@ char	**create_map_grid_from_list(t_map *map)
 			break ;
 		node = node->next;
 	}
+	if (!node)
+		ft_perror_shutdown(RED"Error\nNo valid map found\n"RESET, 2, map);
 	while (node)
 	{
 		map->map_grid[i++] = ft_strdup(node->row);

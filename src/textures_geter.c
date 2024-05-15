@@ -6,13 +6,13 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 17:59:55 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/12 18:03:30 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/15 18:05:51 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/parser.h"
 
-static bool	is_valid_texture_path(char *path)
+static bool	is_valid_texture_path(char *path, t_map *map)
 {
 	int	path_fd;
 
@@ -23,10 +23,12 @@ static bool	is_valid_texture_path(char *path)
 		if (ft_strcmp(path + ft_strlen(path) - 3, ".xpm"))
 			return (true);
 	}
+	else
+		ft_perror_shutdown(RED"Error\nUnable to open texture file\n"RESET, 2, map);
 	return (false);
 }
 
-char	*texture_path(int i, t_map_list *node, char *path)
+char	*texture_path(int i, t_map_list *node, char *path, t_map *map)
 {
 	i += 2;
 	while (node->row && ft_iswhitespace(node->row[i]) && \
@@ -35,7 +37,7 @@ char	*texture_path(int i, t_map_list *node, char *path)
 	if (node->row + i)
 	{
 		path = ft_strldup(node->row + i, ft_strlen(node->row) - i - 1);
-		if (is_valid_texture_path(path) == true)
+		if (is_valid_texture_path(path, map) == true)
 			return (path);
 		free(path);
 	}
@@ -60,7 +62,7 @@ char	*get_texture_path(t_map *map, t_direction dir_code)
 		if (ft_strncmp(node->row + i, direction, 3) == 0)
 		{
 			free(direction);
-			path = texture_path(i, node, path);
+			path = texture_path(i, node, path, map);
 			if (path)
 				return (path);
 			break ;
