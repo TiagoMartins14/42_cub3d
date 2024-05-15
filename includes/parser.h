@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 17:43:34 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/15 15:32:19 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/15 16:59:50 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,12 @@ int			*get_rgb(t_map *map, t_direction dir_code);
 t_map_list	*create_map_list_from_fd(int map_fd, t_map *map);
 char		**create_map_grid_from_list(t_map *map);
 void		reset_map_grid(t_map *map);
+
+/*
+ * map_parameters_checker.c
+*/
+bool		check_for_repeated_texture_definitions(t_map *map, t_direction dir_code);
+bool		check_for_repeated_color_definitions(t_map *map, t_direction dir_code);
 
 /*
  * player_utils.c
