@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 08:54:59 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/14 14:20:49 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/15 15:13:14 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,5 +106,6 @@ int	*get_rgb(t_map *map, t_direction dir_code)
 		node = node->next;
 	}
 	free(direction);
+	ft_perror_shutdown(RED"Error\nC or F is not defined\n"RESET, 2, map);
 	return (NULL);
 }
