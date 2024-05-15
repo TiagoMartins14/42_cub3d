@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 08:54:59 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/15 17:51:32 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/15 17:55:35 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ static int	*return_rgb(t_map_list *node, int i, t_map *map)
 	if (node->row + i)
 	{
 		temp = ft_strldup(node->row + i, ft_strlen(node->row) - 3);
-		printf("temp: %s\n", temp);
 		rgb_str = ft_split(temp, ',');
 		free(temp);
 		rgb = rgb_char_to_int(rgb_str, map);
