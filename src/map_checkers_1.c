@@ -1,50 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_checkers.c                                     :+:      :+:    :+:   */
+/*   map_checkers_1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 21:53:53 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/14 15:17:39 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/15 15:32:58 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/parser.h"
-
-static int	map_height(t_map *map)
-{
-	int height;
-
-	height = 0;
-	while (map->map_grid[height])
-		height++;
-	return (height);
-}
-
-static bool	is_map_closed(t_map *map, int x, int y)
-{
-	map->map_grid[y][x] = 'F';
-	if (x - 1 == -1 ||
-		y - 1 == -1 ||
-		y + 1 > map_height(map) - 1 ||
-		x + 1 > (int)ft_strlen(map->map_grid[y]) ||
-		!map->map_grid[y][x + 1] ||
-		ft_iswhitespace(map->map_grid[y][x + 1]) || 
-		ft_iswhitespace(map->map_grid[y][x - 1]) || 
-		ft_iswhitespace(map->map_grid[y + 1][x]) || 
-		ft_iswhitespace(map->map_grid[y - 1][x]))
-		ft_perror_shutdown(RED"Error\nMap is not closed\n"RESET, 2, map);
-	if (map->map_grid[y][x + 1] == '0')
-		is_map_closed(map, x + 1, y);
-	if (map->map_grid[y][x - 1] == '0')
-		is_map_closed(map, x - 1, y);
-	if (map->map_grid[y + 1][x] == '0')
-		is_map_closed(map, x, y + 1);
-	if (map->map_grid[y - 1][x] == '0')
-		is_map_closed(map, x, y - 1);
-	return (true);
-}
 
 static int	check_map_symbols(t_map *map, char **map_array)
 {
@@ -102,7 +68,7 @@ static bool	is_only_one_player(t_map *map)
 
 void	map_checker(t_map *map)
 {
-	is_map_closed(map, map->starting_position[1], map->starting_position[0]);
+	is_map_closed(map);
 	reset_map_grid(map);
 	check_map_symbols(map, map->map_grid);
 	is_only_one_player(map);

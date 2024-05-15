@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 17:43:34 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/12 22:12:50 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/15 15:32:19 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,14 @@ void		ft_rgb_perror_shutdown(char *str, t_map *map, \
 					int *rgb, char**rgb_str);
 
 /*
- * map_checkers.c
+ * map_checkers_1.c
 */
 void		map_checker(t_map *map);
+
+/*
+ * map_checkers_2.c
+*/
+bool		is_map_closed(t_map *map);
 
 /*
  * visual_getters.c
