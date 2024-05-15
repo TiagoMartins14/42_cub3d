@@ -1,0 +1,23 @@
+NO ./textures/exit_player_back.xpm
+SO ./textures/exit_player_front.xpm
+WE ./textures/exit_player_left.xpm
+EA ./textures/exit_player_right.xpm
+
+11111
+10001
+10S01
+10001
+10001
+10001
+11001
+10001
+10001
+10001
+10001
+10001
+11111
+
+F 20,20,20
+C 200,200,200
+
+

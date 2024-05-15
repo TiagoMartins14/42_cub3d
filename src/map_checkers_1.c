@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 21:53:53 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/15 17:00:40 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/15 17:10:49 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,9 @@ static bool	is_only_one_player(t_map *map)
 
 void	map_checker(t_map *map)
 {
+	check_map_symbols(map);
 	is_map_closed(map);
 	reset_map_grid(map);
-	check_map_symbols(map);
 	is_only_one_player(map);
 	check_for_repeated_texture_definitions(map, NORTH);
 	check_for_repeated_texture_definitions(map, SOUTH);

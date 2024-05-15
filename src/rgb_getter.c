@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 08:54:59 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/15 15:13:14 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/15 17:51:32 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ static int	*rgb_char_to_int(char **rgb_str, t_map *map)
 static int	*return_rgb(t_map_list *node, int i, t_map *map)
 {
 	int		*rgb;
+	char	*temp;
 	char	**rgb_str;
 
 	rgb = NULL;
@@ -74,7 +75,10 @@ static int	*return_rgb(t_map_list *node, int i, t_map *map)
 		i++;
 	if (node->row + i)
 	{
-		rgb_str = ft_split(node->row + i, ',');
+		temp = ft_strldup(node->row + i, ft_strlen(node->row) - 3);
+		printf("temp: %s\n", temp);
+		rgb_str = ft_split(temp, ',');
+		free(temp);
 		rgb = rgb_char_to_int(rgb_str, map);
 		ft_free_smatrix(rgb_str);
 	}

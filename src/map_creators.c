@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 08:47:23 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/14 14:19:50 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/15 17:09:37 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,15 @@ static int	count_rows_to_alloc(t_map_list *node)
 	while (node)
 	{
 		if (check_for_wall_tile(node) == true)
+		{
 			ret++;
+			break ;
+		}
+		node = node->next;
+	}
+	while (node)
+	{
+		ret++;
 		node = node->next;
 	}
 	return (ret);

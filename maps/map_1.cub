@@ -4,7 +4,7 @@ WE ./textures/exit_player_left.xpm
 EA ./textures/exit_player_right.xpm
 
 F 220,100,0
-C 225,30,0
+C 225,30,02
 
         1111111111111111111111111
         1000000000110000000000001

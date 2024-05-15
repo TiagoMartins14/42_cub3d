@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 17:25:23 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/12 23:36:45 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/15 17:20:11 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	parse_map(char *map_file)
 	close(map_fd);
 	map_fetch_struct_info(map);
 	map_checker(map);
-	// map_struct_printer(map);
+	map_struct_printer(map);
 	free_map(map);
 }
 
