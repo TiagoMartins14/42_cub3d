@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 08:47:23 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/16 15:20:31 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/16 18:10:35 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,21 @@ t_map_list	*create_map_list_from_fd(int map_fd, t_map *map)
 }
 
 /// @brief Checks for a wall tile in each line of the map_list
-/// @param map_list_node 
+/// @param node 
 /// @return 
-static bool	check_for_wall_tile(t_map_list *map_list_node)
+static bool	check_for_map_tile(t_map_list *node)
 {
 	int	i;
 
 	i = 0;
-	while (map_list_node->row[i] && ft_iswhitespace(map_list_node->row[i]))
+	while (node->row[i] && ft_iswhitespace(node->row[i]))
 		i++;
-	if (map_list_node->row[i] && map_list_node->row[i] == '1')
+	if (node->row[i] && (node->row[i] == '1' ||
+		node->row[i] == '0' ||
+		(node->row[i] == 'N' && ft_strncmp(node->row + i, "NO", 2))||
+		(node->row[i] == 'S' && ft_strncmp(node->row + i, "SO", 2))||
+		(node->row[i] == 'E' && ft_strncmp(node->row + i, "EA", 2))||
+		(node->row[i] == 'W' && ft_strncmp(node->row + i, "WE", 2))))
 		return (true);
 	return (false);
 }
@@ -63,7 +68,7 @@ static int	count_rows_to_alloc(t_map_list *node)
 	ret = 0;
 	while (node)
 	{
-		if (check_for_wall_tile(node) == true)
+		if (check_for_map_tile(node) == true)
 		{
 			ret++;
 			break ;
@@ -96,7 +101,7 @@ char	**create_map_grid_from_list(t_map *map)
 	node = map->map_list;
 	while (node)
 	{
-		if (check_for_wall_tile(node) == true)
+		if (check_for_map_tile(node) == true)
 			break ;
 		node = node->next;
 	}

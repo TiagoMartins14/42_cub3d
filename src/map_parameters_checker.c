@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 16:27:04 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/16 15:14:22 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/16 18:23:47 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ bool	check_for_repeated_texture_definitions(t_map *map, t_direction dir_code)
 		i = 0;
 		while (node->row && ft_iswhitespace(node->row[i]))
 			i++;
-		if (ft_strncmp(node->row + i, direction, 3) == 0)
+		if (ft_strncmp(node->row + i, direction, 2) == 0 &&	
+			ft_iswhitespace(node->row[i + 2]))
 			count++;
 		node = node->next;
 	}
