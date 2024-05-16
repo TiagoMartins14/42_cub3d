@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 17:59:55 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/15 18:05:51 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/16 18:39:49 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ static bool	is_valid_texture_path(char *path, t_map *map)
 			return (true);
 	}
 	else
-		ft_perror_shutdown(RED"Error\nUnable to open texture file\n"RESET, 2, map);
+		ft_perror_shutdown(RED"Error\nUnable to "
+			"open texture file\n"RESET, 2, map);
 	return (false);
 }
 

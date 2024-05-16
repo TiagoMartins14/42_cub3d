@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 08:47:23 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/16 18:10:35 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/16 18:42:48 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,12 @@ static bool	check_for_map_tile(t_map_list *node)
 	i = 0;
 	while (node->row[i] && ft_iswhitespace(node->row[i]))
 		i++;
-	if (node->row[i] && (node->row[i] == '1' ||
-		node->row[i] == '0' ||
-		(node->row[i] == 'N' && ft_strncmp(node->row + i, "NO", 2))||
-		(node->row[i] == 'S' && ft_strncmp(node->row + i, "SO", 2))||
-		(node->row[i] == 'E' && ft_strncmp(node->row + i, "EA", 2))||
-		(node->row[i] == 'W' && ft_strncmp(node->row + i, "WE", 2))))
+	if (node->row[i] && (node->row[i] == '1'
+			|| node->row[i] == '0'
+			|| (node->row[i] == 'N' && ft_strncmp(node->row + i, "NO", 2))
+			|| (node->row[i] == 'S' && ft_strncmp(node->row + i, "SO", 2))
+			|| (node->row[i] == 'E' && ft_strncmp(node->row + i, "EA", 2))
+			|| (node->row[i] == 'W' && ft_strncmp(node->row + i, "WE", 2))))
 		return (true);
 	return (false);
 }

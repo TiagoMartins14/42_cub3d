@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 21:53:53 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/15 17:10:49 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/16 18:43:21 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static bool	is_only_one_player(t_map *map)
 	int	y;
 	int	x;
 	int	count;
-	
+
 	count = 0;
 	y = 0;
 	while (map->map_grid[y])
