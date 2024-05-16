@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 16:27:04 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/16 18:41:21 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/16 18:46:55 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ bool	check_for_repeated_texture_definitions(t_map *map, t_direction dir_code)
 			count++;
 		node = node->next;
 	}
+	free (direction);
 	if (count != 1)
 		ft_perror_shutdown(RED"Error\nMultiple definitions for "
 			"the same parameter found\n"RESET, 2, map);
@@ -58,6 +59,7 @@ bool	check_for_repeated_color_definitions(t_map *map, t_direction dir_code)
 			count++;
 		node = node->next;
 	}
+	free (direction);
 	if (count != 1)
 		ft_perror_shutdown(RED"Error\nMultiple definitions for "
 			"the same parameter found\n"RESET, 2, map);
