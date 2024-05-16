@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 16:27:04 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/15 17:01:13 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/16 15:14:22 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,10 @@
 bool	check_for_repeated_texture_definitions(t_map *map, t_direction dir_code)
 {
 	t_map_list	*node;
-	char		*path;
 	char		*direction;
 	int			i;
     int         count;
 
-	path = NULL;
 	direction = set_direction(dir_code);
 	node = map->map_list;
     count = 0;
@@ -42,12 +40,10 @@ bool	check_for_repeated_texture_definitions(t_map *map, t_direction dir_code)
 bool	check_for_repeated_color_definitions(t_map *map, t_direction dir_code)
 {
 	t_map_list	*node;
-	char		*path;
 	char		*direction;
 	int			i;
     int         count;
 
-	path = NULL;
 	direction = set_direction(dir_code);
 	node = map->map_list;
     count = 0;

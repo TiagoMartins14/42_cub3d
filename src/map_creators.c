@@ -6,7 +6,7 @@
 /*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 08:47:23 by tiaferna          #+#    #+#             */
-/*   Updated: 2024/05/15 18:09:57 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/05/16 15:20:31 by tiaferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ char	**create_map_grid_from_list(t_map *map)
 	node = map->map_list;
 	i = 0;
 	rows_to_alloc = count_rows_to_alloc(node);
+	if (rows_to_alloc == 0)
+		ft_perror_shutdown(RED"Error\nNo valid map found\n"RESET, 2, map);
 	map->map_grid = (char **)malloc(sizeof(char *) * (rows_to_alloc + 1));
 	node = map->map_list;
 	while (node)
@@ -98,8 +100,6 @@ char	**create_map_grid_from_list(t_map *map)
 			break ;
 		node = node->next;
 	}
-	if (!node)
-		ft_perror_shutdown(RED"Error\nNo valid map found\n"RESET, 2, map);
 	while (node)
 	{
 		map->map_grid[i++] = ft_strdup(node->row);
