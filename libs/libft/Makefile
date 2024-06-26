@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: guest <guest@student.42.fr>                +#+  +:+       +#+         #
+#    By: jrocha-v <jrocha-v@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/15 22:23:12 by jrocha-v          #+#    #+#              #
-#    Updated: 2024/03/12 11:05:49 by guest            ###   ########.fr        #
+#    Updated: 2024/06/05 16:19:20 by jrocha-v         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ LIBFLAGS	= ar -rcs
 RM			= rm -rf
 OBJS_DIR	= objs
 SRCS		= ft_atoi.c \
+			  ft_atol.c \
 			  ft_atoll.c \
 			  ft_bzero.c \
 			  ft_calloc.c \
@@ -66,8 +67,7 @@ SRCS		= ft_atoi.c \
 			  ft_iswhitespace.c \
 			  ft_isdelimiter.c \
 			  ft_firstword.c \
-			  ft_free_imatrix.c \
-			  ft_free_smatrix.c \
+			  ft_free_matrix.c \
 			  ft_error.c \
 			  ft_count_words.c \
 			  ft_count_words_del.c \
@@ -75,13 +75,17 @@ SRCS		= ft_atoi.c \
 			  ft_atoi_base.c \
 			  ft_int_max.c \
 			  ft_nbrlen.c \
-			  ft_perror_exit.c \
-			  ft_checkext.c \
+			  ft_check_ext.c \
+			  ft_safe_malloc.c \
 			  ft_strcmp.c \
 			  ft_strpbrk.c \
 			  ft_strldup.c \
 			  ft_strndup.c \
-			  ft_strupdate.c
+			  ft_strupdate.c \
+			  ft_split_ints.c \
+			  ft_split_longs.c \
+			  ft_safe_free.c \
+			  ft_perror_exit.c
 
 # Substitute .c with .o 
 OBJS		= $(SRCS:%.c=$(OBJS_DIR)/%.o)

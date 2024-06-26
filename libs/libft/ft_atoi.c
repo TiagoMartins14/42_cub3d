@@ -6,13 +6,13 @@
 /*   By: jrocha-v <jrocha-v@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 09:30:38 by jrocha-v          #+#    #+#             */
-/*   Updated: 2023/10/27 14:32:49 by jrocha-v         ###   ########.fr       */
+/*   Updated: 2024/04/26 18:02:06 by jrocha-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/* Converts the string argument 'nstr' to an integer.
+/* Converts the string argument `nstr` to an integer.
    This function returns the converted integral number as an int value. 
    If no valid conversion could be performed, it returns zero. */
 int	ft_atoi(const char *nstr)

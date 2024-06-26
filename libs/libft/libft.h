@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiaferna <tiaferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrocha-v <jrocha-v@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 09:26:26 by jrocha-v          #+#    #+#             */
-/*   Updated: 2024/05/03 20:55:40 by tiaferna         ###   ########.fr       */
+/*   Updated: 2024/06/05 16:18:56 by jrocha-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include "get_next_line/get_next_line.h"
+
+# define ERROR 1
+# define SUCCESS 0
 
 typedef struct s_list
 {
@@ -62,9 +65,8 @@ char				*ft_itoa(int n);
 // New functions
 int					ft_iswhitespace(char c);
 int					ft_isdelimiter(char s, char c);
-char				*ft_firstword(char *argv);
-void				ft_free_smatrix(char **matrix);
-void				ft_free_imatrix(int **matrix);
+char				*ft_firstword(char *str);
+void				ft_free_matrix(void **matrix);
 void				ft_error(char *msg, int exit_code);
 int					ft_count_words(char const *s);
 int					ft_count_words_del(char const *s, char c);
@@ -73,15 +75,20 @@ void				ft_print_smatrix(char **matrix, int height, int width);
 int					ft_isinbase(char c, int str_base, char *base);
 int					ft_atoi_base(const char *str, int str_base);
 int					ft_int_max(int x, int y);
-int					ft_checkext(char *str, char *ext);
+int					ft_check_ext(char *str, char *ext);
 int					ft_nbrlen(long n);
-void				ft_perror_exit(char *str, int error);
 int					ft_strcmp(char *s1, char *s2);
 char				*ft_strpbrk(const char *s1, const char *s2);
 char				*ft_strldup(const char *s, size_t l);
 char				*ft_strndup(const char *s, size_t n);
 char				*ft_strupdate(char *s1, char const *s2);
+long				ft_atol(const char *nstr);
 unsigned long long	ft_atoll(const char *nstr);
+int					*ft_split_ints(char const *s, char c);
+long				*ft_split_longs(char const *s, char c);
+void				*ft_safe_malloc(size_t bytes);
+void				ft_safe_free(void *memory);
+void				ft_perror_exit(char *str, int error);
 
 // List manipulation
 t_list				*ft_lstnew(void *content);
