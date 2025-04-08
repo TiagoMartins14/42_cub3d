@@ -93,3 +93,8 @@ $> ./cub3d map.cub
 ```
 
 To exit the game, just press 'ESC' on your keyboard or click the 'X' in the game window. **HAVE FUN!**
+
+## 👥 Contributors
+This project was developed collaboratively as part of the 42 School curriculum.
+
+- [josevazf](https://github.com/josevazf)
